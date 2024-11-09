@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch} from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { login } from "../../redux/auth/operations";
 import { loginFormSchema } from "../../schemas/schemas";
 
-import css from './LoginForm.module.css'
+import css from './LoginForm.module.css';
 
 const initialValues = {
   email: "",
@@ -14,12 +15,18 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
     const handleSubmit = (values, actions) => {
-      dispatch(login(values));
-      console.log(values);
+        dispatch(login(values))
+        .unwrap()
+        .catch((error) => {
+          if (error === "Request failed with status code 400") {
+            toast.error('Incorrect email or password. Try again!');
+          }
+        });
       actions.resetForm();
     };
     
   return (
+    <>
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={loginFormSchema}>
       <Form className={css.form}>
         <label className={css.label}>
@@ -35,6 +42,8 @@ const LoginForm = () => {
         <button className={css.btn} type="submit">Sing In</button>
       </Form>
     </Formik>
+    <Toaster position="top-right"/>
+    </>
   )
 }
 

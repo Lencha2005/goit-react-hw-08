@@ -6,11 +6,10 @@ export const selectFilter = state => state.filters.filter;
 export const selectFilteredContacts = createSelector(
         [selectContacts, selectFilter],
         (contacts, filter) => {
-            if (!contacts || !filter) {
-                return; // Повертаємо пустий масив, якщо `contacts` ще не завантажено
-            }
+            if (!contacts) return []; // Повертаємо пустий масив, якщо `contacts` ще не завантажено
+            if (!filter) return contacts;
 
-            contacts.filter(contact => {
+            return contacts.filter(contact => {
             return (
                 contact.name.toLowerCase().includes(filter.toLowerCase()) ||
                 contact.number.includes(filter))

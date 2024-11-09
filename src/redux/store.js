@@ -18,8 +18,8 @@ import { authReducer } from "./auth/slice";
 const contactsConfig = {
     key: "contacts",
     storage,
-    //   whitelist: ["users"], // blacklist: ["showProfilesList"]
   };
+  
   const authConfig = {
     key: "auth",
     storage,

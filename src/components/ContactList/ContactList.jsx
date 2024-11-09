@@ -1,32 +1,33 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Contact from '../Contact/Contact';
 import { selectFilteredContacts } from '../../redux/filters/selectors';
-import { selectUserIsLoading } from '../../redux/auth/selectors';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { selectContacts, selectContactsError } from '../../redux/contacts/selectors';
-import styles from './ContactList.module.css'
+import { selectContactsError, selectContactsIsLoading } from '../../redux/contacts/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from '../../redux/contacts/operations';
+import css from './ContactList.module.css'
 
 const ContactList = () => {
-    const contacts = useSelector(selectContacts)
-// const contacts = useSelector(selectFilteredContacts);
-console.log('contacts: ', contacts);
-const isLoading = useSelector(selectUserIsLoading);
+    const dispatch = useDispatch();
+const contacts = useSelector(selectFilteredContacts);
+const isLoading = useSelector(selectContactsIsLoading);
 const error = useSelector(selectContactsError);
+
+useEffect(() => {
+dispatch(fetchContacts())
+}, [dispatch])
 
   return (
     <>
-    {isLoading && <Loader />}
-    {error  && <ErrorMessage />}
     {Array.isArray(contacts) && contacts.length === 0 && (
         <p>There are no contacts in your phonebook yet!</p>
       )}
-    <ul className={styles.list}>
-
+    <ul className={css.list}>
       {Array.isArray(contacts) && contacts.length > 0 && (
         contacts.map(contact => {
         return (
-        <li key={contact.id} className={styles.item}>
+        <li key={contact.id} className={css.item}>
           <Contact
           name={contact.name}
           number={contact.number}

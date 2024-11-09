@@ -5,10 +5,11 @@ import { fetchContacts } from "../../redux/contacts/operations";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactForm from "../../components/ContactForm/ContactForm";
-
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 const ContactsPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectContactsIsLoading);
   const error = useSelector(selectContactsError);
 
@@ -20,8 +21,9 @@ const ContactsPage = () => {
     <div>
       <h1>Phonebook</h1>
       <ContactForm/>
+      {isLoading && <Loader />}
+      {error  && <ErrorMessage />}
       <SearchBox/>
-      {isLoading && !error && <p>Request in progress...</p>}
       <ContactList/>
     </div>
     );

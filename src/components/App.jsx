@@ -1,7 +1,7 @@
 import './App.css';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { selectIsRefreshing } from '../redux/auth/selectors';
@@ -16,21 +16,34 @@ const ContactsPage = lazy(()=> import('../pages/ContactsPage/ContactsPage'));
 
 function App() {
   const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const location = useLocation();
   const isRefreshing = useSelector(selectIsRefreshing);
-  // const loading = useSelector(selectLoading);
-  // const error = useSelector(selectError);
+
 
   useEffect(() => {
-    dispatch(refreshUser())
+    dispatch(refreshUser());
   }, [dispatch]);
+
+  // Зберігаємо шлях у localStorage
+  useEffect(() => {
+    localStorage.setItem('lastPath', location.pathname);
+  }, [location]);
+
+  // При завантаженні додатку перенаправляємо на збережений шлях
+  useEffect(() => {
+    const lastPath = localStorage.getItem('lastPath');
+    if (lastPath) {
+      navigate(lastPath, { replace: true });
+    }
+  }, [navigate]);
 
   if(isRefreshing){
     return <div>Refreshing user...</div>
-  }
+  };
 
   return (
     <Layout>
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -52,7 +65,6 @@ function App() {
           }
         />
       </Routes>
-      {/* </Suspense> */}
     </Layout>
     );
 };
