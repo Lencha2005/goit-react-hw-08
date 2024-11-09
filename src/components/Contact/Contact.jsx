@@ -2,9 +2,9 @@ import { HiPhone } from "react-icons/hi2";
 import { HiUser } from "react-icons/hi2";
 
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
 
 import styles from './Contact.module.css'
+import { deleteContact } from "../../redux/contacts/operations";
 
 
 const Contact = ( {id, name, number} ) => {

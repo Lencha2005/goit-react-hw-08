@@ -7,10 +7,10 @@ const INITIAL_STATE = {
         email: null,
       },
       token: null,
+      isLoading: false,
       isLoggedIn: false,
       isRefreshing: false,
       error: null,
-      isLoading: false,
 }
 
 const authSlice = createSlice({
@@ -63,7 +63,7 @@ const authSlice = createSlice({
     .addCase(refreshUser.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.isLoggedIn = true;
-        state.user = action.payload.user;
+        state.user = action.payload;
     })
     .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;

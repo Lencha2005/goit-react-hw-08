@@ -1,0 +1,26 @@
+.wrap {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    background-color: rgb(66, 65, 65);
+    border: 0.5px solid rgb(124, 120, 120);
+    transition: border-color 250ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+    border-color: white;
+    outline: transparent;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.text {
+    font-size: 18px;
+}

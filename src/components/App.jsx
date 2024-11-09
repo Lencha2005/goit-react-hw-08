@@ -25,7 +25,7 @@ function App() {
   }, [dispatch]);
 
   if(isRefreshing){
-    return <div>Refreshing...</div>
+    return <div>Refreshing user...</div>
   }
 
   return (

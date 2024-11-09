@@ -14,12 +14,6 @@ const Navigation = () => {
     <nav className={css.nav}> 
       <NavLink className={buildCssClasses} to='/'>Home</NavLink>
       {isLoggenIn && <NavLink className={buildCssClasses} to='/contacts'>Contacts</NavLink>}
-      {/* // ) : (
-      //   <>
-      // <NavLink className={buildCssClasses} to='/register'>register</NavLink>
-      // <NavLink className={buildCssClasses} to='/login'>Login</NavLink>
-      // </>
-    )} */}
     </nav>
   )
 }
