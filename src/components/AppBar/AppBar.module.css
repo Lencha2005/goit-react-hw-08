@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    /* gap: 20px; */
+    justify-content: space-between;
+    /* padding-top: 30px; */
+    /* padding-bottom: 30px; */
+    border-bottom: 1px solid white;
+    /* background-color: rgb(81, 75, 75); */
+}

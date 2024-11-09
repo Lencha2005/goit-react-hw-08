@@ -4,7 +4,6 @@ import axios from "axios";
 export const authInstance = axios.create({
     baseURL: "https://connections-api.goit.global/",
 });
-console.log('authInstance: ', authInstance);
 
 export const setToken = (token) => {
     authInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -70,7 +69,7 @@ export const refreshUser = createAsyncThunk(
     
         try {
             setToken(token);
-          const { data }= await axios.get('/users/current');
+          const { data }= await authInstance.get('/users/current');
           console.log('data: ', data);
 
           return data;
