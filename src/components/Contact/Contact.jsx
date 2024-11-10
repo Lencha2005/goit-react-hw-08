@@ -5,8 +5,9 @@ import { CiEdit } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2';
 
+import { setCurrentContact } from "../../redux/contacts/slice";
 import { deleteContact, editContact } from "../../redux/contacts/operations";
-import "sweetalert2/dist/sweetalert2.min.css";
+
 import css from './Contact.module.css'
 
 
@@ -14,12 +15,10 @@ const Contact = ( {id, name, number} ) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (contactId) => {
-    // Виклик модального вікна для підтвердження видалення
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this contact?",
       icon: 'question',
-      // width: '500px',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
@@ -33,13 +32,8 @@ const Contact = ( {id, name, number} ) => {
     });
   };
 
-  // const onDeleteContact = (contactId) => {
-  //   dispatch(deleteContact(contactId))
-  //   console.log(contactId);
-  // };
-
   const onEditContact = () => {
-    // Виклик модального вікна для редагування контакту
+    dispatch(setCurrentContact({ id, name, number }));
     Swal.fire({
       title: 'Edit Contact',
       html: `
@@ -53,11 +47,6 @@ const Contact = ( {id, name, number} ) => {
       preConfirm: () => {
         const editedName = document.getElementById('swal-input1').value;
         const editedNumber = document.getElementById('swal-input2').value;
-        // if (!editedName || !editedNumber) {
-        //   Swal.showValidationMessage('Both fields are required');
-        //   return false;
-        // }
-        console.log({ name: editedName, number: editedNumber });
         return { name: editedName, number: editedNumber };
       },
     }).then((result) => {
@@ -67,28 +56,22 @@ const Contact = ( {id, name, number} ) => {
           name: result.value.name,
           number: result.value.number,
         };
-        console.log(updatedContact);
         dispatch(editContact(updatedContact));
-        // Swal.fire('Saved!', 'Your contact has been updated.', 'success');
       }
     });
   };
 
-  // const onEditContact = (contactId) => {
-  //   dispatch(editContact(contactId));
-  // }
-
   return (
     <div className={css.wrap}>
-      <div className={css.wrapper}>
-      <p className={css.name}><HiUser /> {name}</p>
-      <p className={css.number}><HiPhone /> {number}</p> 
-      </div>
-      <div className={css.btnWrap}>
-      <button type='button' className={css.btn} onClick={() => onDeleteContact(id)}><MdOutlineDeleteForever className={css.icon}/></button>
-      <button type='button' className={css.btn} onClick={onEditContact}><CiEdit className={css.icon}/></button>
-      </div>
+    <div className={css.wrapper}>
+    <p className={css.name}><HiUser /> {name}</p>
+    <p className={css.number}><HiPhone /> {number}</p> 
     </div>
+    <div className={css.btnWrap}>
+    <button type='button' className={css.btn} onClick={() => onDeleteContact(id)}><MdOutlineDeleteForever className={css.icon}/></button>
+    <button type='button' className={css.btn} onClick={onEditContact}><CiEdit className={css.icon}/></button>
+    </div>
+</div>
   )
 }
 

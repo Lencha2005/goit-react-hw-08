@@ -1,18 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Contact from '../Contact/Contact';
 import { selectFilteredContacts } from '../../redux/filters/selectors';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { selectContactsError, selectContactsIsLoading } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
+import Contact from '../Contact/Contact';
 import css from './ContactList.module.css'
+
 
 const ContactList = () => {
     const dispatch = useDispatch();
 const contacts = useSelector(selectFilteredContacts);
-const isLoading = useSelector(selectContactsIsLoading);
-const error = useSelector(selectContactsError);
 
 useEffect(() => {
 dispatch(fetchContacts())
@@ -41,4 +37,4 @@ dispatch(fetchContacts())
   )
 };
 
-export default ContactList
+export default ContactList;

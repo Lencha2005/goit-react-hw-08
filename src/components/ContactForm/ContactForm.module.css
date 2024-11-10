@@ -8,6 +8,7 @@
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 30px;
+    box-shadow: rgb(145, 100, 235)0 5px 15px;
 }
 .label {
     width: 100%;
@@ -18,12 +19,27 @@
     margin-bottom: 4px;
 }
 .input {
-    width: 100%;
+    width: 340px;
     height: 30px;
+    padding-left: 8px;
 }
+
+.input:hover,
+.input:focus {
+    outline: transparent;
+}
+
 .btn {
     background-color: rgb(53, 50, 50);
+    transition: border-color 250ms ease-in-out;
 }
+
+.btn:hover,
+.btn:focus {
+    border-color: white;
+    outline: transparent;
+}
+
 .error {
     font-weight: 600;
     font-size: 14px;

@@ -18,6 +18,7 @@ import { authReducer } from "./auth/slice";
 const contactsConfig = {
     key: "contacts",
     storage,
+    blacklist: ["currentContact"],
   };
   
   const authConfig = {

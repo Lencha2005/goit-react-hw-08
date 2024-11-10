@@ -7,6 +7,7 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { Toaster } from "react-hot-toast";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -19,12 +20,13 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <h1>Your phonebook</h1>
       <ContactForm/>
       {isLoading && <Loader />}
       {error  && <ErrorMessage />}
       <SearchBox/>
       <ContactList/>
+      <Toaster position="top-right" />
     </div>
     );
 }

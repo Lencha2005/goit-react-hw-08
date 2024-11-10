@@ -23,12 +23,12 @@ const ContactForm = () => {
       <Form className={css.form}>
         <label className={css.label}>
           <p className={css.text}>Name</p>
-          <Field className={css.input} type="text" name="name" />
+          <Field className={css.input} type="text" name="name" placeholder='lena'/>
           <ErrorMessage className={css.error} name="name" component="span" />
         </label>
         <label className={css.label}>
         <p className={css.text}>Number</p>
-          <Field className={css.input} type="text" name="number" />
+          <Field className={css.input} type="text" name="number" placeholder='XXXXXXXXXX'/>
           <ErrorMessage className={css.error} name="number" component="span" />
         </label>
         <button className={css.btn} type="submit">Add contact</button>

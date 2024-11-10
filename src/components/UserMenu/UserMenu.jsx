@@ -16,7 +16,7 @@ const UserMenu = () => {
 
   return (
     <div className={css.wrap}>
-      <p className={css.text}>Hello, {user.name}!</p>
+      <p className={css.text}>Welcome, {user.name}!</p>
       <button type ='button' onClick={onLogout} className={css.btn}><MdOutlineLogin className={css.icon}/></button>
     </div>
   )

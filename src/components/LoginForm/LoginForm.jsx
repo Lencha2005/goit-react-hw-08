@@ -31,12 +31,12 @@ const LoginForm = () => {
       <Form className={css.form}>
         <label className={css.label}>
         <p className={css.text}>Email</p>
-          <Field className={css.input} type="text" name="email" />
+          <Field className={css.input} type="text" name="email" placeholder="example@mail.com"/>
           <ErrorMessage className={css.error} name="email" component="span" />
         </label>
         <label className={css.label}>
         <p className={css.text}>Password</p>
-          <Field className={css.input} type="password" name="password" />
+          <Field className={css.input} type="password" name="password" placeholder="Your password"/>
           <ErrorMessage className={css.error} name="password" component="span" />
         </label>
         <button className={css.btn} type="submit">Sing In</button>
