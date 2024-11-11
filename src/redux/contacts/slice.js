@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, editContact, fetchContacts } from "./operations";
 import toast from "react-hot-toast";
+import { logout } from "../auth/operations";
 
 
 const handlePending = (state) => {
@@ -59,6 +60,9 @@ export const contactsSlice = createSlice({
         toast.success("Contact update successfully!");
     })
     .addCase(editContact.rejected, handleRejected)
+    .addCase(logout.fulfilled, () => {
+        return INITIAL_STATE;
+      })
 });
 
 export const contactsReducer = contactsSlice.reducer;
