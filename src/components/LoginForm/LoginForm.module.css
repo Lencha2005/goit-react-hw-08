@@ -31,16 +31,6 @@
 .input:focus {
     outline: transparent;
 }
-.btn {
-    background-color: rgb(53, 50, 50);
-    transition: border-color 250ms ease-in-out;
-}
-
-.btn:hover,
-.btn:focus {
-    border-color: white;
-    outline: transparent;
-}
 
 .error {
     font-weight: 600;

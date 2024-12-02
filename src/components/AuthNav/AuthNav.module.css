@@ -7,10 +7,9 @@
 
 .link {
 font-size: 20px;
-color: white;
 transition: color 250 ms ease-in-out;
 }
 
 .active {
-    color: rgb(145, 100, 235);
+    color: rgb(195, 100, 235);
 }

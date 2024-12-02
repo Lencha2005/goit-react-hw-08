@@ -5,7 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    padding: 2px 16px;
+    box-shadow: rgb(145, 100, 235)0 5px 10px;
 }
 .wrapper {
 display: flex;
@@ -25,16 +26,12 @@ align-items: start;
     height: 40px;
     padding: 8px;
     background-color: transparent;
+    border: transparent;
 }
 
 .btn:hover,
 .btn:focus {
     outline: transparent;
-    border: transparent;
-}
-
-.icon {
-
 }
 
 .icon:hover,
