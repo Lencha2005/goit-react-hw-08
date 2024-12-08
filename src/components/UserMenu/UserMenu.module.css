@@ -12,3 +12,8 @@
 .text {
     font-size: 18px;
 }
+
+.btn {
+    width: 50px;
+    padding: 6px 2px 5px;
+}
