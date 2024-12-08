@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+/* Для планшетів (від 768px до 1024px) */
+@media (max-width: 1024px) {
+  #root {
+    max-width: 768px; /* Зменшення ширини для планшетів */
+    padding: 1.5rem; /* Зменшення відступів */
+  }
+}
+
+/* Для мобільних пристроїв (до 768px) */
+@media (max-width: 768px) {
+  #root {
+    max-width: 100%; /* Ширина на всю доступну область */
+    padding: 1rem; /* Компактні відступи */
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

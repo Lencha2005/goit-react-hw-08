@@ -1,5 +1,5 @@
 .wrap {
-    width: 385px;
+    width: 352px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -12,6 +12,6 @@
 
 }
 .input {
-    width: 100%;
+    width: 340px;
     height: 30px;
 }

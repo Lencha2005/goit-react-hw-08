@@ -9,6 +9,8 @@ import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Toaster } from "react-hot-toast";
 
+import css from './ContactsPage.module.css'
+
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectContactsIsLoading);
@@ -20,7 +22,7 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <h1>Your phonebook</h1>
+      <h1 className={css.title}>Your phonebook</h1>
       <ContactForm/>
       {isLoading && <Loader />}
       {error  && <ErrorMessage />}
